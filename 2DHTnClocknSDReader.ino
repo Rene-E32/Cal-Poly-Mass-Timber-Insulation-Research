@@ -1,17 +1,12 @@
-#include 
-<DHT11.h>
+#include <DHT11.h>
 
-#include 
-"RTClib.h"
+#include "RTClib.h"
 
-#include 
-<Wire.h>
+#include <Wire.h>
 
-#include 
-<SPI.h>
+#include <SPI.h>
 
-#include 
-<SD.h>
+#include <SD.h>
 
 
 //naming/activating file for sd reader
@@ -53,13 +48,13 @@ Serial.begin(9600);
 
 if (!SD.begin(chipSelect)) {
 
-Serial.println("SD initialization failed!");
+Serial.println(F("SD initialization failed!"));
 
 return;
 
 }
 
-Serial.println("SD initialization done.");
+Serial.println(F("SD initialization done."));
 
 
 
@@ -74,13 +69,13 @@ if (sensorLog.size() ==
 
 
 //setting headers
-sensorLog.println("Date(M/D/Y),Time(H:M:S),Internal Temperature(F),Internal Humidity(%),External Temperature(F),External Humidity(%),Smog(PPM)");
+sensorLog.println(F("Date(M/D/Y),Time(H:M:S),Internal Temperature(F),Internal Humidity(%),External Temperature(F),External Humidity(%),Smog(PPM)"));
 
-Serial.println("New file created. Headers written.");
+Serial.println(F("New file created. Headers written."));
 
 } else { // if exist, with same name, itll add onto instead of making new
 
-Serial.println("File already exists. Appending new data to the end.");
+Serial.println(F("File already exists. Appending new data to the end."));
 
 }
 
@@ -88,14 +83,14 @@ sensorLog.close(); // log then close
 
 } else { //error handling
 
-Serial.println("Error opening logged.txt for header initialization.");
+Serial.println(F("Error opening logged.txt for header initialization."));
 
 }
 
 
 if (!rtc.begin()) { //begins clock
 
-Serial.println("Couldn't find RTC"); // if doesn't start
+Serial.println(F("Couldn't find RTC")); // if doesn't start
 
 while (1); // halt if RTC isn't wired correctly, kicks out if cant find 
 
@@ -105,7 +100,7 @@ while (1); // halt if RTC isn't wired correctly, kicks out if cant find
 
 if (rtc.lostPower()) { //lost power case
 
-Serial.println("RTC lost power, setting the time!");
+Serial.println(F("RTC lost power, setting the time!"));
 
 // sets RTC to the date & time this sketch was compiled
 
@@ -171,15 +166,15 @@ if (internalResults ==
 internalTemperature = (internalTemperature * 
 1.8) + 32;
 
-Serial.print("Internal Temperature: ");
+Serial.print(F("Internal Temperature: "));
 
 Serial.print(internalTemperature);
 
-Serial.print(", Internal Humidity: ");
+Serial.print(F(", Internal Humidity: "));
 
 Serial.print(internalHumidity);
 
-Serial.println(" %");
+Serial.println(F(" %"));
 
 }
 
@@ -201,15 +196,15 @@ if (externalResults ==
 externalTemperature = (externalTemperature * 
 1.8) + 32;
 
-Serial.print("External Temperature: ");
+Serial.print(F("External Temperature: "));
 
 Serial.print(externalTemperature);
 
-Serial.print(", External Humidity: ");
+Serial.print(F(", External Humidity: "));
 
 Serial.print(externalHumidity);
 
-Serial.println(" %");
+Serial.println(F(" %"));
 
 }
 
@@ -237,7 +232,7 @@ sensorLog.print('/');
 
 sensorLog.print(now.year(), DEC);
 
-sensorLog.print(",");
+sensorLog.print(F(","));
 
 sensorLog.print(now.hour(), DEC);
 
@@ -275,11 +270,11 @@ sensorLog.println(externalHumidity); //very last one has to have LN
 sensorLog.close(); // save and close file, 
 // avoids corrupt whole file
 
-Serial.println("Data successfully logged to SD card."); //
+Serial.println(F("Data successfully logged to SD card.")); //
 
 } else {
 
-Serial.println("Error opening logged.txt during loop data save.");
+Serial.println(F("Error opening logged.txt during loop data save."));
 
 }
 
