@@ -7,6 +7,11 @@
 #include 
 <Wire.h>
 
+#include 
+<SPI.h>
+
+#include 
+<SD.h>
 
 
 //naming/activating file for sd reader
