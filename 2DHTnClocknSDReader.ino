@@ -8,6 +8,8 @@
 
 #include <SD.h>
 
+//testing ignore this
+
 
 //naming/activating file for sd reader
 File sensorLog;
