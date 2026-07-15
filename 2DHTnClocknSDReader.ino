@@ -93,14 +93,14 @@ while (1); // halt if RTC isn't wired correctly, kicks out if cant find
 
 
 
-if (rtc.lostPower()) { //lost power case
+if (!rtc.lostPower()) { //lost power case
 
 Serial.println(F("RTC lost power, setting the time!"));
 
 // sets RTC to the date & time this sketch was compiled
 
-rtc.adjust(DateTime(F(__DATE__), //logs data from pc from upload
-F(__TIME__)));
+//rtc.adjust(DateTime(F(__DATE__), //logs data from pc from upload
+//F(__TIME__)));
 
 }
 
@@ -151,7 +151,7 @@ Serial.print(internalTemperatureC);
 
 Serial.print(F(", Internal Temperature(F): "));
 
-Serial.print(internalTemperatureC);
+Serial.print(internalTemperatureF);
 
 Serial.print(F(", Internal Humidity: "));
 
