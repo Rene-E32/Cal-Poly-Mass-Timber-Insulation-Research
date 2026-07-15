@@ -8,9 +8,10 @@ DS3231 RTC (I2C)
 5V+GND -> All Modules 
 
 DHT11(Inside) 
-Data -> D8
+Data -> D9
  (+) -> 5V
  (-) -> GND
+
 DHT11(Outside)
 Data -> D8
  (+) -> 5V
