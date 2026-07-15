@@ -1,0 +1,32 @@
+Wiring for project
+>parts list 
+2x DHT11 Sensors
+SD Card Module (SPI)
+DS3231 RTC (I2C)
+
+
+5V+GND -> All Modules 
+
+DHT11(Inside) 
+Data -> D9
+ (+) -> 5V
+ (-) -> GND
+
+DHT11(Outside)
+Data -> D8
+ (+) -> 5V
+ (-) -> GND
+
+SD Card Module
+CS -> D10
+MOSI -> D11 
+MISO -> D12
+SCK -> D13
+VCC -> 5V
+GND -> GND
+
+DS3231 RTC 
+SDA -> A4
+SCL -> A5
+
+
