@@ -99,7 +99,7 @@ Serial.println(F("RTC lost power, setting the time!"));
 
 // sets RTC to the date & time this sketch was compiled
 
-rtc.adjust(DateTime(F(__DATE__), //logs data from pc from upload
+rtc.adjust(DateTime(F(__DATE__), //sets clock to compile time
 F(__TIME__)));
 
 }
@@ -151,7 +151,7 @@ Serial.print(internalTemperatureC);
 
 Serial.print(F(", Internal Temperature(F): "));
 
-Serial.print(internalTemperatureC);
+Serial.print(internalTemperatureF);
 
 Serial.print(F(", Internal Humidity: "));
 
