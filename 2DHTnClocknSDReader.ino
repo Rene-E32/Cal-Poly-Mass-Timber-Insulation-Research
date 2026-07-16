@@ -42,11 +42,8 @@ Serial.begin(9600);
 // Initialize SD Card hardware
 
 if (!SD.begin(chipSelect)) {
-
-Serial.println(F("SD initialization failed!"));
-
-return;
-
+  Serial.println(F("SD initialization failed!"));
+  while (1); // halt — matches your RTC failure handling
 }
 
 Serial.println(F("SD initialization done."));
@@ -112,15 +109,12 @@ loop() {
 // initialize variables, gives 0 valuse
 //updates over 0, to make sure dont get NaN values
 
-int internalTemperatureC = 0;
-int internalTemperatureF = 0;
-
-int internalHumidity = 0;
-
-int externalTemperatureC = 0;
-int externalTemperatureF = 0;
-
-int externalHumidity = 0;
+int internalTemperatureC = -999;
+int internalTemperatureF = -999;
+int internalHumidity = -999;
+int externalTemperatureC = -999;
+int externalTemperatureF = -999;
+int externalHumidity = -999;
 
 
 DateTime now = rtc.now(); // sets now time, the current moment of RTC
